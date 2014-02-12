@@ -72,7 +72,7 @@ module.exports = {
             plugin.plugins.chivebot.registerCommand('what would bender say?', function (raw, args, cb) {
                 var i = Math.floor((Math.random() * quotes.length) + 1);
 
-                cb(null, '"' + quotes[i] + '"');
+                cb(null, quotes[i]);
             });
 
             next();
