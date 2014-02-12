@@ -69,10 +69,16 @@ module.exports = {
 
         plugin.dependency('chivebot', function (plugin, next) {
 
-            plugin.plugins.chivebot.registerCommand('what would bender say?', function (raw, args, cb) {
-                var i = Math.floor((Math.random() * quotes.length) + 1);
+            plugin.plugins.chivebot.registerCommand('what', function (raw, args, cb) {
+                var full = args.slice(2).join(' '), i;
 
-                cb(null, quotes[i]);
+                if (full.match('bender say')) {
+                    i = Math.floor((Math.random() * quotes.length) + 1);
+                    cb(null, quotes[i]);
+                    return;
+                }
+
+                cb(null, 'What?');
             });
 
             next();
